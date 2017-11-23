@@ -1,0 +1,38 @@
+{
+  "name": "Usuario",
+  "plural": "Usuarios",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "apellidos": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "solicita": {
+      "type": "hasAndBelongsToMany",
+      "model": "ListaFamiliar",
+      "foreignKey": ""
+    },
+    "listaFamiliar": {
+      "type": "belongsTo",
+      "model": "ListaFamiliar",
+      "foreignKey": ""
+    },
+    "owner": {
+      "type": "hasOne",
+      "model": "ListaFamiliar",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
