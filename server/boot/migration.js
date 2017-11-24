@@ -1,4 +1,5 @@
 'use strict';
+'use strict';
 
 var config = require('../config.local.js')
 
