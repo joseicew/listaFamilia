@@ -20,7 +20,7 @@
     "solicita": {
       "type": "hasAndBelongsToMany",
       "model": "ListaFamiliar",
-      "foreignKey": ""
+      "foreignKey": "usuarioId"
     },
     "listaFamiliar": {
       "type": "belongsTo",

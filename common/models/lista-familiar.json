@@ -26,7 +26,7 @@
     "solicita": {
       "type": "hasAndBelongsToMany",
       "model": "Usuario",
-      "foreignKey": ""
+      "foreignKey": "listaFamiliarId"
     },
     "productos": {
       "type": "hasMany",
@@ -59,7 +59,43 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "solicitar"
     }
   ],
-  "methods": {}
+  "methods": {
+    "prototype.solicitar": {
+      "accepts": [
+        {
+          "arg": "contexto",
+          "type": "object",
+          "required": true,
+          "description": "\"context\"",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "this",
+          "type": "object",
+          "root": true,
+          "description": "Usuario solicita Lista"
+        }
+      ],
+      "description": "\"Solicitud a una lista\"",
+      "http": [
+        {
+          "path": "/solicitar",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
