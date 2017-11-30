@@ -26,7 +26,7 @@
     "solicita": {
       "type": "hasAndBelongsToMany",
       "model": "Usuario",
-      "foreignKey": "listaFamiliarId"
+      "foreignKey": ""
     },
     "productos": {
       "type": "hasMany",

@@ -20,7 +20,7 @@
     "solicita": {
       "type": "hasAndBelongsToMany",
       "model": "ListaFamiliar",
-      "foreignKey": "usuarioId"
+      "foreignKey": ""
     },
     "listaFamiliar": {
       "type": "belongsTo",
@@ -39,7 +39,43 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "aceptarSolicitud"
     }
   ],
-  "methods": {}
+  "methods": {
+    "prototype.aceptarSolicitud": {
+      "accepts": [
+        {
+          "arg": "contexto",
+          "type": "object",
+          "required": false,
+          "description": "Context",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "ListaUsuarios",
+          "type": "array",
+          "root": true,
+          "description": "Lista de usuarios de la lista familiar asociada"
+        }
+      ],
+      "description": "Aceptamos la solicitud de un usuario en nuestra lista",
+      "http": [
+        {
+          "path": "/aceptarSolicitud",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }
