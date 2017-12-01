@@ -10,10 +10,6 @@
     "nombre": {
       "type": "string",
       "required": true
-    },
-    "comprar": {
-      "type": "boolean",
-      "required": true
     }
   },
   "validations": [],

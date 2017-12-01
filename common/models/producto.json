@@ -30,7 +30,50 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "limpiarLista"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
     }
   ],
-  "methods": {}
+  "methods": {
+    "limpiarLista": {
+      "accepts": [
+        {
+          "arg": "contexto",
+          "type": "object",
+          "required": false,
+          "description": "Contexto - Context",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaProductos",
+          "type": "object",
+          "root": true,
+          "description": "Lista de productos cambiados"
+        }
+      ],
+      "description": "Ponemos a false todos los productos de la lista, indicando que están comprados",
+      "http": [
+        {
+          "path": "/limpiarLista",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }
