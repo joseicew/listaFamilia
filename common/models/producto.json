@@ -44,6 +44,13 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "comprado"
     }
   ],
   "methods": {
@@ -71,6 +78,34 @@
       "http": [
         {
           "path": "/limpiarLista",
+          "verb": "put"
+        }
+      ]
+    },
+    "prototype.comprado": {
+      "accepts": [
+        {
+          "arg": "contexto",
+          "type": "object",
+          "required": false,
+          "description": "Contexto - Context",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "ListaProductosUsuario",
+          "type": "object",
+          "root": true,
+          "description": "Todo los productos de la lista en la que está el usuario"
+        }
+      ],
+      "description": "Cambiamos de estado el producto a true si es false o viceversa",
+      "http": [
+        {
+          "path": "/comprado",
           "verb": "put"
         }
       ]
