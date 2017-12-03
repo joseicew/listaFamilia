@@ -82,15 +82,17 @@ module.exports = function(Producto) {
                         console.log(listaproductos[i].id+" "+Productos.id);
                         if(listaproductos[i].id == Productos.id){
                             console.log(listaproductos[i]);
-                            if(listaproductos[i].comprar==true){listaproductos[i].comprar=false;}
-                            else if(listaproductos[i].comprar==false){listaproductos[i].comprar=true;}                            
+                            
+                            if(listaproductos[i].comprar==0){listaproductos[i].comprar=1;}
+                            else if(listaproductos[i].comprar==1){listaproductos[i].comprar=0;} 
+                                
+                            listaproductos[i].save();                           
                         }
                         
                     }
                     
                     console.log(listaproductos);
-                    ListaProductosUsuario=listaproductos;
-                    callback(null, ListaProductosUsuario);
+                    callback(null, listaproductos);
                 })
             })
         })
